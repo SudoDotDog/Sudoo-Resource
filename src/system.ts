@@ -4,7 +4,7 @@
  * @description System
  */
 
-import { ResourceHandler } from "./handler";
+import { hashResourceCategory } from "./util";
 
 export class ResourceSystem {
 
@@ -14,9 +14,15 @@ export class ResourceSystem {
     }
 
     protected readonly _resourceName: string;
-    protected readonly _categories: Map<string, ResourceHandler>;
+    protected readonly _categories: string[];
 
     private constructor() {
 
+    }
+
+    public category(category: string[] | string): this {
+
+        this._categories.push(hashResourceCategory(category));
+        return this;
     }
 }
