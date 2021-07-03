@@ -4,6 +4,6 @@
  * @description Index
  */
 
-export * from "./handler";
-export * from "./system";
+export class ResourceHandler {
 
+}
