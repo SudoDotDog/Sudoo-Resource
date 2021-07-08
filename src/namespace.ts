@@ -4,7 +4,7 @@
  * @description Namespace
  */
 
-import { hashResourceCategory } from "./util";
+import { ResourceCategory } from "./category";
 
 export class ResourceNamespace {
 
@@ -14,7 +14,7 @@ export class ResourceNamespace {
     }
 
     protected readonly _namespace: string;
-    protected readonly _categories: string[];
+    protected readonly _categories: ResourceCategory[];
 
     private constructor(namespace: string) {
 
@@ -22,9 +22,9 @@ export class ResourceNamespace {
         this._categories = [];
     }
 
-    public category(category: string[] | string): this {
+    public category(category: ResourceCategory): this {
 
-        this._categories.push(hashResourceCategory(category));
+        this._categories.push(category);
         return this;
     }
 }

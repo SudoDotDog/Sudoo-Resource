@@ -6,7 +6,7 @@
 
 export class ResourceCategory {
 
-    public static create() {
+    public static create(): ResourceCategory {
 
         return new ResourceCategory();
     }

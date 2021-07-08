@@ -6,13 +6,12 @@
 
 export class ResourceHandler {
 
-    public static create() {
+    public static create(): ResourceHandler {
 
         return new ResourceHandler();
     }
 
     private constructor() {
-
 
     }
 }
