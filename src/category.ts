@@ -4,14 +4,23 @@
  * @description Category
  */
 
+import { IResourceSubset } from "./subset/declare";
+
 export class ResourceCategory {
 
-    public static create(): ResourceCategory {
+    public static create(subsets: IResourceSubset[]): ResourceCategory {
 
-        return new ResourceCategory();
+        return new ResourceCategory(subsets);
     }
 
-    private constructor() {
+    private readonly _subsets: IResourceSubset[];
 
+    private constructor(subsets: IResourceSubset[]) {
+
+        this._subsets = subsets;
+    }
+
+    public get length(): number {
+        return this._subsets.length;
     }
 }

@@ -4,14 +4,19 @@
  * @description Handler
  */
 
+import { ResourceNamespace } from "./namespace";
+
 export class ResourceHandler {
 
-    public static create(): ResourceHandler {
+    public static fromNamespace(namespace: ResourceNamespace): ResourceHandler {
 
-        return new ResourceHandler();
+        return new ResourceHandler(namespace);
     }
 
-    private constructor() {
+    private readonly _namespace: ResourceNamespace;
 
+    private constructor(namespace: ResourceNamespace) {
+
+        this._namespace = namespace;
     }
 }

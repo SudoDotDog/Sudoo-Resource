@@ -22,6 +22,10 @@ export class ResourceNamespace {
         this._categories = [];
     }
 
+    public get length(): number {
+        return this._categories.length;
+    }
+
     public category(category: ResourceCategory): this {
 
         this._categories.push(category);
