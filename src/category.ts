@@ -1,18 +1,17 @@
 /**
  * @author WMXPY
  * @namespace Resource
- * @description Handler
+ * @description Category
  */
 
-export class ResourceHandler {
+export class ResourceCategory {
 
     public static create() {
 
-        return new ResourceHandler();
+        return new ResourceCategory();
     }
 
     private constructor() {
-
 
     }
 }

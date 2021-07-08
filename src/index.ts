@@ -4,7 +4,8 @@
  * @description Index
  */
 
+export * from "./category";
 export * from "./handler";
-export * from "./system";
+export * from "./namespace";
 export * from "./util";
 
