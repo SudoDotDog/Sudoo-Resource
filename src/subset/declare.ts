@@ -8,3 +8,8 @@ export enum RESOURCE_SUBSET_TYPE {
 
     FIXED = "FIXED",
 }
+
+export interface IResourceSubset {
+
+    type: RESOURCE_SUBSET_TYPE;
+}

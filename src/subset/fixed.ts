@@ -4,19 +4,22 @@
  * @description Fixed
  */
 
-import { RESOURCE_SUBSET_TYPE } from "./declare";
+import { ResourceBaseSubset } from "./base";
+import { IResourceSubset, RESOURCE_SUBSET_TYPE } from "./declare";
 
-export abstract class ResourceFixedSubset extends ResourceSubset {
+export class ResourceFixedSubset extends ResourceBaseSubset implements IResourceSubset {
 
-    public static fixed(fixedSubset: string): ResourceFixedSubset {
+    public static create(fixedSubset: string): ResourceFixedSubset {
 
-        return new ResourceFixedSubset(RESOURCE_SUBSET_TYPE.FIXED);
+        return new ResourceFixedSubset(fixedSubset);
     }
 
-    private readonly _type: RESOURCE_SUBSET_TYPE;
+    private readonly _fixedSubset: string;
 
-    private constructor(type: RESOURCE_SUBSET_TYPE) {
+    private constructor(fixedSubset: string) {
 
-        this._type = type;
+        super(RESOURCE_SUBSET_TYPE.FIXED);
+
+        this._fixedSubset = fixedSubset;
     }
 }

@@ -4,19 +4,18 @@
  * @description Subset
  */
 
-import { RESOURCE_SUBSET_TYPE } from "./declare";
+import { IResourceSubset } from "./declare";
+import { ResourceFixedSubset } from "./fixed";
 
-export abstract class ResourceSubset {
+export class ResourceSubset {
 
-    public static fixed(fixedSubset: string): ResourceSubset {
+    public static fixed(fixedSubset: string): IResourceSubset {
 
-        return new ResourceSubset(RESOURCE_SUBSET_TYPE.FIXED);
+        return ResourceFixedSubset.create(fixedSubset);
     }
 
-    private readonly _type: RESOURCE_SUBSET_TYPE;
+    private constructor() {
 
-    private constructor(type: RESOURCE_SUBSET_TYPE) {
-
-        this._type = type;
+        throw new Error("Cannot create instance of ResourceSubset");
     }
 }
