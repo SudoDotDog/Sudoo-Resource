@@ -22,4 +22,8 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
 
         this._fixedSubset = fixedSubset;
     }
+
+    public toString(): string {
+        return this._fixedSubset;
+    }
 }

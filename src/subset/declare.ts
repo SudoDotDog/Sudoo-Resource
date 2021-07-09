@@ -12,4 +12,5 @@ export enum RESOURCE_SUBSET_TYPE {
 export interface IResourceSubset {
 
     type: RESOURCE_SUBSET_TYPE;
+    toString(): string;
 }

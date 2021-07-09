@@ -23,4 +23,8 @@ export class ResourceCategory {
     public get length(): number {
         return this._subsets.length;
     }
+
+    public toString(): string {
+        return this._subsets.join(", ");
+    }
 }
