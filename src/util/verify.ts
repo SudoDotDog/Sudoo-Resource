@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
- * @namespace Resource
- * @description Util
+ * @namespace Resource_Util
+ * @description Verify
  */
 
 export const verifyResourceCategoryList = (category: string[]): boolean => {
@@ -12,12 +12,4 @@ export const verifyResourceCategoryList = (category: string[]): boolean => {
         }
     }
     return true;
-};
-
-export const hashResourceCategory = (category: string[] | string): string => {
-
-    if (typeof category === 'string') {
-        return category;
-    }
-    return category.join(':');
 };

@@ -11,5 +11,4 @@ export * from "./subset/base";
 export * from "./subset/declare";
 export * from "./subset/fixed";
 export * from "./subset/subset";
-export * from "./util";
 
