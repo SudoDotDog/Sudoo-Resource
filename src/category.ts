@@ -25,6 +25,20 @@ export class ResourceCategory {
     }
 
     public toString(): string {
-        return this._subsets.join(", ");
+        return this._subsets
+            .map((subset: IResourceSubset) => subset.toString())
+            .join(":");
+    }
+
+    public match(target: string[]): boolean {
+
+        if (target.length !== this._subsets.length) {
+            return false;
+        }
+
+        return this._subsets
+            .every((subset: IResourceSubset, index: number) => {
+                return subset.match(target[index]);
+            });
     }
 }

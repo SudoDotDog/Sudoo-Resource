@@ -24,6 +24,12 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
     }
 
     public toString(): string {
+
         return this._fixedSubset;
+    }
+
+    public match(target: string): boolean {
+
+        return target === this._fixedSubset;
     }
 }

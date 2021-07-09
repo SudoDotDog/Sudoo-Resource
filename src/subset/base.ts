@@ -19,4 +19,9 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
 
         throw new Error(`[Sudoo-Resource] ${this.constructor.name}::toString is abstract`);
     }
+
+    public match(_target: string): boolean {
+
+        throw new Error(`[Sudoo-Resource] ${this.constructor.name}::match is abstract`);
+    }
 }

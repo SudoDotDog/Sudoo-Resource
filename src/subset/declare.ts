@@ -13,4 +13,5 @@ export interface IResourceSubset {
 
     type: RESOURCE_SUBSET_TYPE;
     toString(): string;
+    match(target: string): boolean;
 }
