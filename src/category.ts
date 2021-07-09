@@ -4,6 +4,7 @@
  * @description Category
  */
 
+import { RESOURCE_CATEGORY_SEPARATOR } from "./declare";
 import { IResourceSubset } from "./subset/declare";
 
 export class ResourceCategory {
@@ -25,9 +26,10 @@ export class ResourceCategory {
     }
 
     public toString(): string {
+
         return this._subsets
             .map((subset: IResourceSubset) => subset.toString())
-            .join(":");
+            .join(RESOURCE_CATEGORY_SEPARATOR);
     }
 
     public match(target: string[]): boolean {
