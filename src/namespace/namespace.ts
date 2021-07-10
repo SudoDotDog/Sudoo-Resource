@@ -34,7 +34,7 @@ export class ResourceNamespace {
         return this._categories.length;
     }
 
-    public category(category: ResourceCategory): this {
+    public addCategory(category: ResourceCategory): this {
 
         this._categories.push(category);
         return this;
@@ -42,8 +42,8 @@ export class ResourceNamespace {
 
     public test(elements: string[]): boolean {
 
-        const matchResult: ResourceCategory | null = this.match(elements);
-        return matchResult !== null;
+        const processResult: NamespaceProcessResult = this.process(elements);
+        return processResult.matched;
     }
 
     public match(elements: string[]): ResourceCategory | null {

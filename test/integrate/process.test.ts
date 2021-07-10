@@ -35,7 +35,7 @@ describe('Given (Process) Integrate Test', (): void => {
             ResourceSubset.fixed(fixedName, availableFixed),
             ResourceSubset.identifier(secondIdentifierName),
         );
-        namespace.category(category);
+        namespace.addCategory(category);
 
         const resourceString: string = `urn:enum:first:bad:second`;
         const resourceElements: string[] = separateResourceString(resourceString);
@@ -66,7 +66,7 @@ describe('Given (Process) Integrate Test', (): void => {
             ResourceSubset.fixed(fixedName, availableFixed),
             ResourceSubset.identifier(secondIdentifierName),
         );
-        namespace.category(category);
+        namespace.addCategory(category);
 
         const resourceString: string = `urn:${availableEnum}:first:${availableFixed}:second`;
         const resourceElements: string[] = separateResourceString(resourceString);

@@ -25,7 +25,7 @@ describe('Given (Test) Integrate Test', (): void => {
                 availableEnum,
             ]),
         );
-        namespace.category(enumCategory);
+        namespace.addCategory(enumCategory);
 
         const resourceString: string = `urn:${availableEnum}`;
         const resourceElements: string[] = separateResourceString(resourceString);
@@ -45,7 +45,7 @@ describe('Given (Test) Integrate Test', (): void => {
                 availableEnum,
             ]),
         );
-        namespace.category(enumCategory);
+        namespace.addCategory(enumCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
         const resourceElements: string[] = separateResourceString(resourceString);
@@ -62,7 +62,7 @@ describe('Given (Test) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.fixed(chance.string(), "test"),
         );
-        namespace.category(fixedCategory);
+        namespace.addCategory(fixedCategory);
 
         const resourceString: string = `urn:test`;
         const resourceElements: string[] = separateResourceString(resourceString);
@@ -79,7 +79,7 @@ describe('Given (Test) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.fixed(chance.string(), "test"),
         );
-        namespace.category(fixedCategory);
+        namespace.addCategory(fixedCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
         const resourceElements: string[] = separateResourceString(resourceString);
@@ -96,7 +96,7 @@ describe('Given (Test) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.identifier(chance.string()),
         );
-        namespace.category(identifierCategory);
+        namespace.addCategory(identifierCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
         const resourceElements: string[] = separateResourceString(resourceString);
