@@ -6,13 +6,14 @@
 
 import { ResourceCategory } from "../category/category";
 import { CategoryProcessResult } from "../category/declare";
+import { UNIFORM_RESOURCE_NAME_NAMESPACE } from "../common/declare";
 import { NamespaceProcessResult } from "./declare";
 
 export class ResourceNamespace {
 
     public static uniformResourceName(): ResourceNamespace {
 
-        return this.create("urn");
+        return this.create(UNIFORM_RESOURCE_NAME_NAMESPACE);
     }
 
     public static create(namespace: string): ResourceNamespace {
