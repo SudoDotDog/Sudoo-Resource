@@ -6,13 +6,17 @@
 
 import { IResourceSubset } from "../subset/declare";
 
-export type CategoryProcessResult = {
+export type CategoryProcessMatchedResult = {
 
     readonly matched: true;
 
     readonly values: Record<string, string>;
     readonly valueMap: Map<IResourceSubset, string>;
-} | {
-
+};
+export type CategoryProcessUnmatchedResult = {
     readonly matched: false;
 };
+
+export type CategoryProcessResult =
+    CategoryProcessMatchedResult
+    | CategoryProcessUnmatchedResult;

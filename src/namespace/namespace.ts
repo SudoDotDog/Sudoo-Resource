@@ -71,6 +71,7 @@ export class ResourceNamespace {
 
                     matched: true,
                     category,
+                    categoryName: category.categoryName,
                     valueMap: categoryProcessResult.valueMap,
                     values: categoryProcessResult.values,
                 };

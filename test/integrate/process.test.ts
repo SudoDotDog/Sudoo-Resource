@@ -76,6 +76,7 @@ describe('Given (Process) Integrate Test', (): void => {
 
             matched: true,
             category,
+            categoryName: category.categoryName,
             valueMap: (processResult as any).valueMap,
             values: {
                 [enumName]: availableEnum,

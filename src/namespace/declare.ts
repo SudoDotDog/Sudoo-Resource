@@ -5,16 +5,17 @@
  */
 
 import { ResourceCategory } from "../category/category";
-import { IResourceSubset } from "../subset/declare";
+import { CategoryProcessMatchedResult } from "../category/declare";
 
-export type NamespaceProcessResult = {
+export type NamespaceProcessMatchResult = {
 
-    readonly matched: true;
     readonly category: ResourceCategory;
-
-    readonly values: Record<string, string>;
-    readonly valueMap: Map<IResourceSubset, string>;
-} | {
-
+    readonly categoryName: string;
+} & CategoryProcessMatchedResult;
+export type NamespaceProcessUnmatchedResult = {
     readonly matched: false;
 };
+
+export type NamespaceProcessResult =
+    NamespaceProcessMatchResult
+    | NamespaceProcessUnmatchedResult;
