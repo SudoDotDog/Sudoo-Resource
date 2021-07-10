@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Resource
+ * @namespace Handler
  * @description Handler
  */
 

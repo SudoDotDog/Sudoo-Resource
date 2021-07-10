@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Resource_Subset
+ * @namespace Subset
  * @description Base
  */
 

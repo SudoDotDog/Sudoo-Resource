@@ -6,6 +6,7 @@
 
 import { ResourceCategory } from "../category/category";
 import { CategoryProcessResult } from "../category/declare";
+import { NamespaceProcessResult } from "./declare";
 
 export class ResourceNamespace {
 
@@ -46,14 +47,14 @@ export class ResourceNamespace {
 
     public match(elements: string[]): ResourceCategory | null {
 
-        const processResult: CategoryProcessResult = this.process(elements);
+        const processResult: NamespaceProcessResult = this.process(elements);
         if (processResult.matched) {
             return processResult.category;
         }
         return null;
     }
 
-    public process(elements: string[]): CategoryProcessResult {
+    public process(elements: string[]): NamespaceProcessResult {
 
         if (!this._matchNamespace(elements)) {
             return { matched: false };
@@ -64,7 +65,12 @@ export class ResourceNamespace {
 
             const categoryProcessResult: CategoryProcessResult = category.process(fixedElements);
             if (categoryProcessResult.matched) {
-                return categoryProcessResult;
+
+                return {
+
+                    category,
+                    ...categoryProcessResult,
+                };
             }
         }
         return { matched: false };

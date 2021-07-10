@@ -8,6 +8,7 @@
 import { expect } from "chai";
 import * as Chance from "chance";
 import { ResourceCategory, ResourceNamespace, ResourceSubset } from "../../src";
+import { NamespaceProcessResult } from "../../src/namespace/declare";
 import { separateResourceString } from "../../src/util/separate";
 
 describe('Given (Process) Integrate Test', (): void => {
@@ -37,8 +38,8 @@ describe('Given (Process) Integrate Test', (): void => {
 
         const resourceString: string = `urn:first:bad:second`;
         const resourceElements: string[] = separateResourceString(resourceString);
-        const testResult: boolean = namespace.category(resourceElements);
+        const processResult: NamespaceProcessResult = namespace.process(resourceElements);
 
-        expect(testResult).to.be.true;
+        expect(processResult).to.be.true;
     });
 });
