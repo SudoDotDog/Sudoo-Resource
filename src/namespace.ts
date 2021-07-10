@@ -39,21 +39,32 @@ export class ResourceNamespace {
 
     public test(elements: string[]): boolean {
 
-        for (const category of this._categories) {
-            if (category.match(elements)) {
-                return true;
-            }
-        }
-        return false;
+        const matchResult: ResourceCategory | null = this.match(elements);
+        return matchResult !== null;
     }
 
     public match(elements: string[]): ResourceCategory | null {
 
+        if (!this._matchNamespace(elements)) {
+            return null;
+        }
+
+        const fixedElements: string[] = this._getCategoryElements(elements);
         for (const category of this._categories) {
-            if (category.match(elements)) {
+            if (category.match(fixedElements)) {
                 return category;
             }
         }
         return null;
+    }
+
+    private _matchNamespace(elements: string[]): boolean {
+
+        return this._namespace === elements[0];
+    }
+
+    private _getCategoryElements(elements: string[]): string[] {
+
+        return elements.slice(1);
     }
 }

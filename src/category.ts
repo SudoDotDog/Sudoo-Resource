@@ -36,10 +36,13 @@ export class ResourceCategory {
             return false;
         }
 
-        return this._subsets
-            .every((subset: IResourceSubset, index: number) => {
-                return subset.match(elements[index]);
-            });
+        for (let i = 0; i < elements.length; i++) {
+
+            if (!this._subsets[i].match(elements[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public hash(): string {
