@@ -4,7 +4,7 @@
  * @description Verify
  */
 
-export const verifyResourceCategoryList = (category: string[]): boolean => {
+export const verifyResourceSubset = (category: string[]): boolean => {
 
     for (const element of category) {
         if (element.includes(':')) {
