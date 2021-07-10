@@ -4,7 +4,9 @@
  * @description Index
  */
 
-export * from "./category";
+export * from "./category/category";
+export * from "./category/declare";
+export * from "./declare";
 export * from "./handler";
 export * from "./namespace";
 export * from "./subset/base";

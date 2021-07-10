@@ -4,9 +4,10 @@
  * @description Category
  */
 
-import { ResourceProcessResult, RESOURCE_CATEGORY_SEPARATOR } from "./declare";
-import { IResourceSubset, SubsetProcessResult } from "./subset/declare";
-import { hashMapValues } from "./util/hash";
+import { CategoryProcessResult } from "./declare";
+import { IResourceSubset, SubsetProcessResult } from "../subset/declare";
+import { hashMapValues } from "../util/hash";
+import { RESOURCE_CATEGORY_SEPARATOR } from "../declare";
 
 export class ResourceCategory {
 
@@ -33,11 +34,11 @@ export class ResourceCategory {
 
     public match(elements: string[]): boolean {
 
-        const processResult: ResourceProcessResult = this.process(elements);
+        const processResult: CategoryProcessResult = this.process(elements);
         return processResult.matched;
     }
 
-    public process(elements: string[]): ResourceProcessResult {
+    public process(elements: string[]): CategoryProcessResult {
 
         if (elements.length !== this._subsets.length) {
             return { matched: false };
