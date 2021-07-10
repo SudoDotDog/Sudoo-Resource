@@ -68,8 +68,10 @@ export class ResourceNamespace {
 
                 return {
 
+                    matched: true,
                     category,
-                    ...categoryProcessResult,
+                    valueMap: categoryProcessResult.valueMap,
+                    values: categoryProcessResult.values,
                 };
             }
         }
