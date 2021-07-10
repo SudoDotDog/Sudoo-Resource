@@ -8,6 +8,11 @@ import { ResourceCategory } from "./category";
 
 export class ResourceNamespace {
 
+    public static uniformResourceName(): ResourceNamespace {
+
+        return this.create("urn");
+    }
+
     public static create(namespace: string): ResourceNamespace {
 
         return new ResourceNamespace(namespace);
@@ -30,6 +35,16 @@ export class ResourceNamespace {
 
         this._categories.push(category);
         return this;
+    }
+
+    public test(elements: string[]): boolean {
+
+        for (const category of this._categories) {
+            if (category.match(elements)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public match(elements: string[]): ResourceCategory | null {

@@ -9,7 +9,12 @@ import { IResourceSubset } from "./subset/declare";
 
 export class ResourceCategory {
 
-    public static create(subsets: IResourceSubset[]): ResourceCategory {
+    public static fromSubsets(...subsets: IResourceSubset[]): ResourceCategory {
+
+        return this.fromSubsetList(subsets);
+    }
+
+    public static fromSubsetList(subsets: IResourceSubset[]): ResourceCategory {
 
         return new ResourceCategory(subsets);
     }
