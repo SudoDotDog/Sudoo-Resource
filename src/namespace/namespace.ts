@@ -1,11 +1,11 @@
 /**
  * @author WMXPY
- * @namespace Resource
+ * @namespace Namespace
  * @description Namespace
  */
 
-import { ResourceCategory } from "./category/category";
-import { CategoryProcessResult } from "./category/declare";
+import { ResourceCategory } from "../category/category";
+import { CategoryProcessResult } from "../category/declare";
 
 export class ResourceNamespace {
 

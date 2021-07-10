@@ -1,13 +1,13 @@
 /**
  * @author WMXPY
- * @namespace Resource
+ * @namespace Category
  * @description Category
  */
 
 import { CategoryProcessResult } from "./declare";
 import { IResourceSubset, SubsetProcessResult } from "../subset/declare";
 import { hashMapValues } from "../util/hash";
-import { RESOURCE_CATEGORY_SEPARATOR } from "../declare";
+import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
 
 export class ResourceCategory {
 

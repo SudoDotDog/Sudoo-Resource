@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Resource
+ * @namespace Common
  * @description Declare
  */
 

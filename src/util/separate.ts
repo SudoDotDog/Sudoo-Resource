@@ -4,7 +4,7 @@
  * @description Separate
  */
 
-import { RESOURCE_CATEGORY_SEPARATOR } from "../declare";
+import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
 
 export const separateResourceString = (resource: string): string[] => {
 

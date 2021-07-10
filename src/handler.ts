@@ -4,7 +4,7 @@
  * @description Handler
  */
 
-import { ResourceNamespace } from "./namespace";
+import { ResourceNamespace } from "./namespace/namespace";
 
 export class ResourceHandler {
 
