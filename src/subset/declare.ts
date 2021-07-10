@@ -6,7 +6,9 @@
 
 export enum RESOURCE_SUBSET_TYPE {
 
+    IDENTIFIER = "IDENTIFIER",
     FIXED = "FIXED",
+    ENUM = "ENUM",
 }
 
 export interface IResourceSubset {

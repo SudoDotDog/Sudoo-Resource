@@ -11,5 +11,6 @@ export * from "./subset/base";
 export * from "./subset/declare";
 export * from "./subset/enum";
 export * from "./subset/fixed";
+export * from "./subset/identifier";
 export * from "./subset/subset";
 

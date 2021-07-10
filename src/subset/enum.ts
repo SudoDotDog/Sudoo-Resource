@@ -18,7 +18,7 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
 
     private constructor(options: string[]) {
 
-        super(RESOURCE_SUBSET_TYPE.FIXED);
+        super(RESOURCE_SUBSET_TYPE.ENUM);
 
         this._options = options;
     }
