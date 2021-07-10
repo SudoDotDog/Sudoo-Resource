@@ -20,7 +20,7 @@ export const hashMapValues = (target: Map<IResourceSubset, string>): Record<stri
     const result: Record<string, string> = {};
 
     for (const entry of entries) {
-        result[entry[0].toString()] = entry[1];
+        result[entry[0].name] = entry[1];
     }
     return result;
 };

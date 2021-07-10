@@ -9,14 +9,14 @@ import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./de
 
 export class ResourceIdentifierSubset extends ResourceBaseSubset implements IResourceSubset {
 
-    public static create(): ResourceIdentifierSubset {
+    public static create(subsetName: string): ResourceIdentifierSubset {
 
-        return new ResourceIdentifierSubset();
+        return new ResourceIdentifierSubset(subsetName);
     }
 
-    private constructor() {
+    private constructor(subsetName: string) {
 
-        super(RESOURCE_SUBSET_TYPE.IDENTIFIER);
+        super(subsetName, RESOURCE_SUBSET_TYPE.IDENTIFIER);
     }
 
     public match(_target: string): boolean {

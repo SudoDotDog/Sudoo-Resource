@@ -10,9 +10,17 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
 
     public readonly type: RESOURCE_SUBSET_TYPE;
 
-    protected constructor(type: RESOURCE_SUBSET_TYPE) {
+    private readonly _subsetName: string;
+
+    protected constructor(subsetName: string, type: RESOURCE_SUBSET_TYPE) {
 
         this.type = type;
+
+        this._subsetName = subsetName;
+    }
+
+    public get name(): string {
+        return this._subsetName;
     }
 
     public match(_target: string): boolean {

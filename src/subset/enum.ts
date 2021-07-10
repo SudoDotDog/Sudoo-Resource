@@ -9,16 +9,16 @@ import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./de
 
 export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceSubset {
 
-    public static create(options: string[]): ResourceEnumSubset {
+    public static create(subsetName: string, options: string[]): ResourceEnumSubset {
 
-        return new ResourceEnumSubset(options);
+        return new ResourceEnumSubset(subsetName, options);
     }
 
     private readonly _options: string[];
 
-    private constructor(options: string[]) {
+    private constructor(subsetName: string, options: string[]) {
 
-        super(RESOURCE_SUBSET_TYPE.ENUM);
+        super(subsetName, RESOURCE_SUBSET_TYPE.ENUM);
 
         this._options = options;
     }

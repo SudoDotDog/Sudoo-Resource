@@ -11,19 +11,19 @@ import { ResourceIdentifierSubset } from "./identifier";
 
 export class ResourceSubset {
 
-    public static enum(options: string[]): IResourceSubset {
+    public static enum(subsetName: string, options: string[]): IResourceSubset {
 
-        return ResourceEnumSubset.create(options);
+        return ResourceEnumSubset.create(subsetName, options);
     }
 
-    public static fixed(fixedSubset: string): IResourceSubset {
+    public static fixed(subsetName: string, fixedSubset: string): IResourceSubset {
 
-        return ResourceFixedSubset.create(fixedSubset);
+        return ResourceFixedSubset.create(subsetName, fixedSubset);
     }
 
-    public static identifier(): IResourceSubset {
+    public static identifier(subsetName: string): IResourceSubset {
 
-        return ResourceIdentifierSubset.create();
+        return ResourceIdentifierSubset.create(subsetName);
     }
 
     private constructor() {

@@ -9,16 +9,16 @@ import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./de
 
 export class ResourceFixedSubset extends ResourceBaseSubset implements IResourceSubset {
 
-    public static create(fixedSubset: string): ResourceFixedSubset {
+    public static create(subsetName: string, fixedSubset: string): ResourceFixedSubset {
 
-        return new ResourceFixedSubset(fixedSubset);
+        return new ResourceFixedSubset(subsetName, fixedSubset);
     }
 
     private readonly _fixedSubset: string;
 
-    private constructor(fixedSubset: string) {
+    private constructor(subsetName: string, fixedSubset: string) {
 
-        super(RESOURCE_SUBSET_TYPE.FIXED);
+        super(subsetName, RESOURCE_SUBSET_TYPE.FIXED);
 
         this._fixedSubset = fixedSubset;
     }
