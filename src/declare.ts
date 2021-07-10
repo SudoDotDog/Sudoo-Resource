@@ -11,6 +11,7 @@ export const RESOURCE_CATEGORY_SEPARATOR = ':';
 export type ResourceProcessResult = {
 
     readonly matched: true;
+
     readonly values: Record<string, string>;
     readonly valueMap: Map<IResourceSubset, string>;
 } | {
