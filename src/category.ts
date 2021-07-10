@@ -4,8 +4,9 @@
  * @description Category
  */
 
-import { RESOURCE_CATEGORY_SEPARATOR } from "./declare";
-import { IResourceSubset } from "./subset/declare";
+import { ResourceProcessResult, RESOURCE_CATEGORY_SEPARATOR } from "./declare";
+import { IResourceSubset, SubsetProcessResult } from "./subset/declare";
+import { hashMapValues } from "./util/hash";
 
 export class ResourceCategory {
 
@@ -32,17 +33,36 @@ export class ResourceCategory {
 
     public match(elements: string[]): boolean {
 
+        const processResult: ResourceProcessResult = this.process(elements);
+        return processResult.matched;
+    }
+
+    public process(elements: string[]): ResourceProcessResult {
+
         if (elements.length !== this._subsets.length) {
-            return false;
+            return { matched: false };
         }
 
+        const resultValueMap: Map<IResourceSubset, string> = new Map();
         for (let i = 0; i < elements.length; i++) {
 
-            if (!this._subsets[i].match(elements[i])) {
-                return false;
+            const subset: IResourceSubset = this._subsets[i];
+            const element: string = elements[i];
+
+            const subsetProcessResult: SubsetProcessResult = subset.process(element);
+
+            if (!subsetProcessResult.matched) {
+                return { matched: false };
             }
+
+            resultValueMap.set(subset, subsetProcessResult.value);
         }
-        return true;
+
+        return {
+            matched: true,
+            valueMap: resultValueMap,
+            values: hashMapValues(resultValueMap),
+        };
     }
 
     public hash(): string {

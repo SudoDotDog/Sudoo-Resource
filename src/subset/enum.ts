@@ -30,9 +30,15 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
 
     public process(target: string): SubsetProcessResult {
 
+        const matched: boolean = this.match(target);
+
+        if (!matched) {
+            return { matched: false };
+        }
+
         return {
 
-            matched: this.match(target),
+            matched: true,
             value: target,
         };
     }

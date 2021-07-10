@@ -13,8 +13,11 @@ export enum RESOURCE_SUBSET_TYPE {
 
 export type SubsetProcessResult = {
 
-    readonly matched: boolean;
+    readonly matched: true;
     readonly value: string;
+} | {
+
+    readonly matched: false;
 };
 
 export interface IResourceSubset {
