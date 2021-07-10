@@ -46,7 +46,9 @@ export class ResourceCategory {
     public process(elements: string[]): CategoryProcessResult {
 
         if (elements.length !== this._subsets.length) {
-            return { matched: false };
+            return {
+                matched: false,
+            };
         }
 
         const resultValueMap: Map<IResourceSubset, string> = new Map();
@@ -58,7 +60,9 @@ export class ResourceCategory {
             const subsetProcessResult: SubsetProcessResult = subset.process(element);
 
             if (!subsetProcessResult.matched) {
-                return { matched: false };
+                return {
+                    matched: false,
+                };
             }
             resultValueMap.set(subset, subsetProcessResult.value);
         }

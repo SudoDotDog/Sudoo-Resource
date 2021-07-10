@@ -33,7 +33,9 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
         const matched: boolean = this.match(target);
 
         if (!matched) {
-            return { matched: false };
+            return {
+                matched: false,
+            };
         }
 
         return {

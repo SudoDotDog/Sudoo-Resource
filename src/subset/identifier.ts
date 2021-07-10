@@ -29,7 +29,9 @@ export class ResourceIdentifierSubset extends ResourceBaseSubset implements IRes
         const matched: boolean = this.match(target);
 
         if (!matched) {
-            return { matched: false };
+            return {
+                matched: false,
+            };
         }
 
         return {

@@ -33,7 +33,9 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
         const matched: boolean = this.match(target);
 
         if (!matched) {
-            return { matched: false };
+            return {
+                matched: false,
+            };
         }
 
         return {

@@ -58,7 +58,9 @@ export class ResourceNamespace {
     public process(elements: string[]): NamespaceProcessResult {
 
         if (!this._matchNamespace(elements)) {
-            return { matched: false };
+            return {
+                matched: false,
+            };
         }
 
         const fixedElements: string[] = this._getCategoryElements(elements);
@@ -77,7 +79,9 @@ export class ResourceNamespace {
                 };
             }
         }
-        return { matched: false };
+        return {
+            matched: false,
+        };
     }
 
     private _matchNamespace(elements: string[]): boolean {
