@@ -11,9 +11,18 @@ export enum RESOURCE_SUBSET_TYPE {
     ENUM = "ENUM",
 }
 
+export type SubsetProcessResult = {
+
+    readonly matched: boolean;
+    readonly value: string;
+};
+
 export interface IResourceSubset {
 
     type: RESOURCE_SUBSET_TYPE;
-    toString(): string;
+
     match(target: string): boolean;
+    process: (target: string) => SubsetProcessResult;
+
+    toString(): string;
 }

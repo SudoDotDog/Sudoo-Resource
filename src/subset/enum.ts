@@ -5,7 +5,7 @@
  */
 
 import { ResourceBaseSubset } from "./base";
-import { IResourceSubset, RESOURCE_SUBSET_TYPE } from "./declare";
+import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./declare";
 
 export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceSubset {
 
@@ -23,13 +23,22 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
         this._options = options;
     }
 
-    public toString(): string {
-
-        return this._options[0];
-    }
-
     public match(target: string): boolean {
 
         return this._options.includes(target);
+    }
+
+    public process(target: string): SubsetProcessResult {
+
+        return {
+
+            matched: this.match(target),
+            value: target,
+        };
+    }
+
+    public toString(): string {
+
+        return this._options[0];
     }
 }

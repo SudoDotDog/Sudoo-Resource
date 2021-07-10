@@ -5,7 +5,7 @@
  */
 
 import { ResourceBaseSubset } from "./base";
-import { IResourceSubset, RESOURCE_SUBSET_TYPE } from "./declare";
+import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./declare";
 
 export class ResourceFixedSubset extends ResourceBaseSubset implements IResourceSubset {
 
@@ -23,13 +23,22 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
         this._fixedSubset = fixedSubset;
     }
 
-    public toString(): string {
-
-        return this._fixedSubset;
-    }
-
     public match(target: string): boolean {
 
         return target === this._fixedSubset;
+    }
+
+    public process(target: string): SubsetProcessResult {
+
+        return {
+
+            matched: this.match(target),
+            value: target,
+        };
+    }
+
+    public toString(): string {
+
+        return this._fixedSubset;
     }
 }
