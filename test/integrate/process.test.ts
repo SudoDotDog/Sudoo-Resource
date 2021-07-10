@@ -27,6 +27,7 @@ describe('Given (Process) Integrate Test', (): void => {
         const secondIdentifierName: string = chance.string();
 
         const category: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
             ResourceSubset.enum(enumName, [
                 availableEnum,
             ]),
@@ -57,6 +58,7 @@ describe('Given (Process) Integrate Test', (): void => {
         const secondIdentifierName: string = chance.string();
 
         const category: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
             ResourceSubset.enum(enumName, [
                 availableEnum,
             ]),

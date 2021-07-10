@@ -20,7 +20,16 @@ export const hashMapValues = (target: Map<IResourceSubset, string>): Record<stri
     const result: Record<string, string> = {};
 
     for (const entry of entries) {
-        result[entry[0].name] = entry[1];
+
+        const entryName: string = entry[0].name;
+        const entryValue: string = entry[1];
+
+        if (typeof result[entryName] === 'undefined') {
+            result[entryName] = entryValue;
+        } else {
+            const parsedEntryName: string = `ERROR_DUPLICATE_${entryName}`;
+            result[parsedEntryName] = entryValue;
+        }
     }
     return result;
 };

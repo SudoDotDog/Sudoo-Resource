@@ -11,25 +11,30 @@ import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
 
 export class ResourceCategory {
 
-    public static fromSubsets(...subsets: IResourceSubset[]): ResourceCategory {
+    public static fromSubsets(categoryName: string, ...subsets: IResourceSubset[]): ResourceCategory {
 
-        return this.fromSubsetList(subsets);
+        return this.fromSubsetList(categoryName, subsets);
     }
 
-    public static fromSubsetList(subsets: IResourceSubset[]): ResourceCategory {
+    public static fromSubsetList(categoryName: string, subsets: IResourceSubset[]): ResourceCategory {
 
-        return new ResourceCategory(subsets);
+        return new ResourceCategory(categoryName, subsets);
     }
 
+    private readonly _categoryName: string;
     private readonly _subsets: IResourceSubset[];
 
-    private constructor(subsets: IResourceSubset[]) {
+    private constructor(categoryName: string, subsets: IResourceSubset[]) {
 
+        this._categoryName = categoryName;
         this._subsets = subsets;
     }
 
     public get length(): number {
         return this._subsets.length;
+    }
+    public get categoryName(): string {
+        return this._categoryName;
     }
 
     public match(elements: string[]): boolean {
@@ -55,7 +60,6 @@ export class ResourceCategory {
             if (!subsetProcessResult.matched) {
                 return { matched: false };
             }
-
             resultValueMap.set(subset, subsetProcessResult.value);
         }
 

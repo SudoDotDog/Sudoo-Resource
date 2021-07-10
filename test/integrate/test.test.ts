@@ -19,9 +19,12 @@ describe('Given (Test) Integrate Test', (): void => {
         const availableEnum: string = chance.string();
         const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
 
-        const enumCategory: ResourceCategory = ResourceCategory.fromSubsets(ResourceSubset.enum(chance.string(), [
-            availableEnum,
-        ]));
+        const enumCategory: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
+            ResourceSubset.enum(chance.string(), [
+                availableEnum,
+            ]),
+        );
         namespace.category(enumCategory);
 
         const resourceString: string = `urn:${availableEnum}`;
@@ -36,9 +39,12 @@ describe('Given (Test) Integrate Test', (): void => {
         const availableEnum: string = chance.string();
         const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
 
-        const enumCategory: ResourceCategory = ResourceCategory.fromSubsets(ResourceSubset.enum(chance.string(), [
-            availableEnum,
-        ]));
+        const enumCategory: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
+            ResourceSubset.enum(chance.string(), [
+                availableEnum,
+            ]),
+        );
         namespace.category(enumCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
@@ -52,7 +58,10 @@ describe('Given (Test) Integrate Test', (): void => {
 
         const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
 
-        const fixedCategory: ResourceCategory = ResourceCategory.fromSubsets(ResourceSubset.fixed(chance.string(), "test"));
+        const fixedCategory: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
+            ResourceSubset.fixed(chance.string(), "test"),
+        );
         namespace.category(fixedCategory);
 
         const resourceString: string = `urn:test`;
@@ -66,7 +75,10 @@ describe('Given (Test) Integrate Test', (): void => {
 
         const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
 
-        const fixedCategory: ResourceCategory = ResourceCategory.fromSubsets(ResourceSubset.fixed(chance.string(), "test"));
+        const fixedCategory: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
+            ResourceSubset.fixed(chance.string(), "test"),
+        );
         namespace.category(fixedCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
@@ -80,7 +92,10 @@ describe('Given (Test) Integrate Test', (): void => {
 
         const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
 
-        const identifierCategory: ResourceCategory = ResourceCategory.fromSubsets(ResourceSubset.identifier(chance.string()));
+        const identifierCategory: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.string(),
+            ResourceSubset.identifier(chance.string()),
+        );
         namespace.category(identifierCategory);
 
         const resourceString: string = `urn:${chance.string()}`;
