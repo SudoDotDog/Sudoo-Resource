@@ -7,6 +7,7 @@
 import { ResourceCategory } from "../category/category";
 import { NamespaceProcessResult } from "../namespace/declare";
 import { ResourceNamespace } from "../namespace/namespace";
+import { ResourceHandlingAction } from "./declare";
 
 export class ResourceHandler {
 
@@ -16,7 +17,7 @@ export class ResourceHandler {
     }
 
     private readonly _namespace: ResourceNamespace;
-    private readonly _categoryMap: Map<ResourceCategory, any>;
+    private readonly _categoryMap: Map<ResourceCategory, ResourceHandlingAction>;
 
     private constructor(namespace: ResourceNamespace) {
 
@@ -24,15 +25,34 @@ export class ResourceHandler {
         this._categoryMap = new Map();
     }
 
-    public onCategory(category: ResourceCategory): this {
+    public onCategory(category: ResourceCategory, action: ResourceHandlingAction): this {
 
-        this._categoryMap.set(category, {});
+        this._categoryMap.set(category, action);
         return this;
     }
 
-    public handleResource(elements: string[]): boolean {
+    public async handleResource(elements: string[]): Promise<boolean> {
 
         const processResult: NamespaceProcessResult = this._namespace.process(elements);
-        return processResult.matched;
+
+        if (!processResult.matched) {
+            return false;
+        }
+        if (!this._categoryMap.has(processResult.category)) {
+            return false;
+        }
+
+        const handlingAction: ResourceHandlingAction | undefined = this._categoryMap.get(processResult.category);
+
+        if (!handlingAction) {
+            return false;
+        }
+
+        const handlingResult: boolean | void = await handlingAction(processResult);
+
+        if (typeof handlingResult === 'boolean' && !handlingResult) {
+            return false;
+        }
+        return true;
     }
 }

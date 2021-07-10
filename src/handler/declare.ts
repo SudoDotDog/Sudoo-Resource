@@ -4,6 +4,12 @@
  * @description Declare
  */
 
-import { CategoryProcessResult } from "../category/declare";
+import { IResourceSubset } from "../subset/declare";
 
-export type ResourceHandlerAction = (processResult: CategoryProcessResult) => Promise<void> | void;
+export type ResourceDetail = {
+
+    readonly values: Record<string, string>;
+    readonly valueMap: Map<IResourceSubset, string>;
+};
+
+export type ResourceHandlingAction = (detail: ResourceDetail) => Promise<void | boolean> | void | boolean;
