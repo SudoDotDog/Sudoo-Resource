@@ -25,22 +25,27 @@ export class ResourceCategory {
         return this._subsets.length;
     }
 
-    public toString(): string {
+    public match(elements: string[]): boolean {
 
-        return this._subsets
-            .map((subset: IResourceSubset) => subset.toString())
-            .join(RESOURCE_CATEGORY_SEPARATOR);
-    }
-
-    public match(target: string[]): boolean {
-
-        if (target.length !== this._subsets.length) {
+        if (elements.length !== this._subsets.length) {
             return false;
         }
 
         return this._subsets
             .every((subset: IResourceSubset, index: number) => {
-                return subset.match(target[index]);
+                return subset.match(elements[index]);
             });
+    }
+
+    public hash(): string {
+
+        return this.toString();
+    }
+
+    public toString(): string {
+
+        return this._subsets
+            .map((subset: IResourceSubset) => subset.toString())
+            .join(RESOURCE_CATEGORY_SEPARATOR);
     }
 }

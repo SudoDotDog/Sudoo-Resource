@@ -31,4 +31,14 @@ export class ResourceNamespace {
         this._categories.push(category);
         return this;
     }
+
+    public match(elements: string[]): ResourceCategory | null {
+
+        for (const category of this._categories) {
+            if (category.match(elements)) {
+                return category;
+            }
+        }
+        return null;
+    }
 }
