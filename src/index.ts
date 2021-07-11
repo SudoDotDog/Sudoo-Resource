@@ -9,6 +9,7 @@ export * from "./category/declare";
 export * from "./common/declare";
 export * from "./handler/handler";
 export * from "./namespace/namespace";
+export * from "./persistence/declare";
 export * from "./subset/base";
 export * from "./subset/declare";
 export * from "./subset/enum";
