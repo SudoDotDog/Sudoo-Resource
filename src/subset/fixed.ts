@@ -48,7 +48,7 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
 
     public toString(): string {
 
-        return this._fixedSubset;
+        return `${this.subsetName}-fixed~${this._fixedSubset}`;
     }
 
     public persistence(): ResourceSubsetPersistence {

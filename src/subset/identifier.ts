@@ -43,7 +43,7 @@ export class ResourceIdentifierSubset extends ResourceBaseSubset implements IRes
 
     public toString(): string {
 
-        return `[Identifier]`;
+        return `${this.subsetName}-identifier`;
     }
 
     public persistence(): ResourceSubsetPersistence {

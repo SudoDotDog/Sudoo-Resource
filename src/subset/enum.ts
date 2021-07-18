@@ -48,7 +48,13 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
 
     public toString(): string {
 
-        return this._options[0];
+        if (this._options.length === 0) {
+            return `${this.subsetName}-enum~?`;
+        }
+        if (this._options.length === 1) {
+            return `${this.subsetName}-enum~${this._options[0]}`;
+        }
+        return `${this.subsetName}-enum~${this._options[0]}...${this._options.length}`;
     }
 
     public persistence(): ResourceSubsetPersistence {

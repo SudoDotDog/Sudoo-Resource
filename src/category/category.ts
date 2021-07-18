@@ -93,9 +93,11 @@ export class ResourceCategory {
 
     public toString(): string {
 
-        return this._subsets
+        const subsetString: string = this._subsets
             .map((subset: IResourceSubset) => subset.toString())
             .join(RESOURCE_CATEGORY_SEPARATOR);
+
+        return subsetString;
     }
 
     public persistence(): ResourceCategoryPersistence {

@@ -103,6 +103,21 @@ export class ResourceNamespace {
         };
     }
 
+    public hash(): string {
+
+        const categoriesString: string = this.toResourceStringList().join('::');
+        return `${this._namespace}::${categoriesString}`;
+    }
+
+    public toResourceStringList(): string[] {
+
+        return this._categories.map((category: ResourceCategory) => {
+
+            const categoryString: string = category.toString();
+            return `${category.categoryName}^${this._namespace}:${categoryString}`;
+        });
+    }
+
     public persistence(): ResourceNamespacePersistence {
 
         return {

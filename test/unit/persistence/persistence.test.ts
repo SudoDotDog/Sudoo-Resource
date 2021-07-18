@@ -63,6 +63,10 @@ describe('Given (Persistence) Methods', (): void => {
 
         const namespace: ResourceNamespace = ResourceNamespace.fromPersistence(structure);
 
-        expect(namespace.namespace).to.be.equal(namespaceName);
+        const resourceStringList: string[] = namespace.toResourceStringList();
+
+        expect(resourceStringList).to.be.deep.equal([
+            `${categoryName}^${namespaceName}:${identifierName}-identifier`,
+        ]);
     });
 });
