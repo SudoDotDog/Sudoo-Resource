@@ -17,7 +17,7 @@ export class ResourceHandler {
     }
 
     private readonly _namespace: ResourceNamespace;
-    private readonly _categoryMap: Map<ResourceCategory, ResourceHandlingAction>;
+    private readonly _categoryMap: Map<ResourceCategory, Set<ResourceHandlingAction>>;
 
     private constructor(namespace: ResourceNamespace) {
 
@@ -25,9 +25,34 @@ export class ResourceHandler {
         this._categoryMap = new Map();
     }
 
-    public onCategory(category: ResourceCategory, action: ResourceHandlingAction): this {
+    public addAction(category: ResourceCategory, action: ResourceHandlingAction): this {
 
-        this._categoryMap.set(category, action);
+        if (this._categoryMap.has(category)) {
+
+            const existCategory: Set<ResourceHandlingAction> = this._categoryMap.get(category) as Set<ResourceHandlingAction>;
+            existCategory.add(action);
+
+            return this;
+        }
+
+        this._categoryMap.set(category, new Set([action]));
+        return this;
+    }
+
+    public removeAction(category: ResourceCategory, action: ResourceHandlingAction): this {
+
+        if (!this._categoryMap.has(category)) {
+            return this;
+        }
+
+        const existCategory: Set<ResourceHandlingAction> = this._categoryMap.get(category) as Set<ResourceHandlingAction>;
+        existCategory.delete(action);
+        return this;
+    }
+
+    public removeCategory(category: ResourceCategory): this {
+
+        this._categoryMap.delete(category);
         return this;
     }
 
@@ -42,16 +67,14 @@ export class ResourceHandler {
             return false;
         }
 
-        const handlingAction: ResourceHandlingAction | undefined = this._categoryMap.get(processResult.category);
+        const handlingActions: Set<ResourceHandlingAction> = this._categoryMap.get(processResult.category) as Set<ResourceHandlingAction>;
 
-        if (!handlingAction) {
-            return false;
-        }
+        for (const action of handlingActions) {
 
-        const handlingResult: boolean | void = await handlingAction(processResult);
-
-        if (typeof handlingResult === 'boolean' && !handlingResult) {
-            return false;
+            const handlingResult: boolean | void = await action(processResult);
+            if (typeof handlingResult === 'boolean' && !handlingResult) {
+                return false;
+            }
         }
         return true;
     }
