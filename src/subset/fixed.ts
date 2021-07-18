@@ -4,6 +4,7 @@
  * @description Fixed
  */
 
+import { ResourceSubsetPersistence } from "../persistence/declare";
 import { ResourceBaseSubset } from "./base";
 import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./declare";
 
@@ -48,5 +49,15 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
     public toString(): string {
 
         return this._fixedSubset;
+    }
+
+    public persistence(): ResourceSubsetPersistence {
+
+        return {
+
+            subsetName: this.subsetName,
+            type: 'fixed',
+            value: this._fixedSubset,
+        };
     }
 }

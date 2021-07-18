@@ -4,6 +4,7 @@
  * @description Identifier
  */
 
+import { ResourceSubsetPersistence } from "../persistence/declare";
 import { ResourceBaseSubset } from "./base";
 import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./declare";
 
@@ -35,7 +36,6 @@ export class ResourceIdentifierSubset extends ResourceBaseSubset implements IRes
         }
 
         return {
-
             matched: true,
             value: target,
         };
@@ -44,5 +44,14 @@ export class ResourceIdentifierSubset extends ResourceBaseSubset implements IRes
     public toString(): string {
 
         return `[Identifier]`;
+    }
+
+    public persistence(): ResourceSubsetPersistence {
+
+        return {
+
+            subsetName: this.subsetName,
+            type: 'identifier',
+        };
     }
 }

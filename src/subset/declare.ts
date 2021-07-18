@@ -24,7 +24,7 @@ export type SubsetProcessResult = {
 
 export interface IResourceSubset {
 
-    readonly name: string;
+    readonly subsetName: string;
     readonly type: RESOURCE_SUBSET_TYPE;
 
     match(target: string): boolean;

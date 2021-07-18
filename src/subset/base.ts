@@ -20,7 +20,7 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
         this._subsetName = subsetName;
     }
 
-    public get name(): string {
+    public get subsetName(): string {
         return this._subsetName;
     }
 
