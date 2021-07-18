@@ -4,6 +4,7 @@
  * @description Subset
  */
 
+import { ResourceSubsetPersistence } from "../persistence/declare";
 import { IResourceSubset } from "./declare";
 import { ResourceEnumSubset } from "./enum";
 import { ResourceFixedSubset } from "./fixed";
@@ -24,6 +25,23 @@ export class ResourceSubset {
     public static identifier(subsetName: string): IResourceSubset {
 
         return ResourceIdentifierSubset.create(subsetName);
+    }
+
+    public static fromPersistence(structure: ResourceSubsetPersistence): IResourceSubset {
+
+        switch (structure.type) {
+
+            case "enum": {
+                return this.enum(structure.subsetName, structure.options);
+            }
+            case "fixed": {
+                return this.fixed(structure.subsetName, structure.value);
+            }
+            case "identifier": {
+                return this.identifier(structure.subsetName);
+            }
+        }
+        throw new Error(`Unsupported subset type: ${(structure as any).type}`);
     }
 
     private constructor() {

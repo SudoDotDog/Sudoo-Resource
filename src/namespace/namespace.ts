@@ -7,28 +7,38 @@
 import { ResourceCategory } from "../category/category";
 import { CategoryProcessResult } from "../category/declare";
 import { UNIFORM_RESOURCE_NAME_NAMESPACE } from "../common/declare";
-import { ResourceNamespacePersistence } from "../persistence/declare";
+import { ResourceCategoryPersistence, ResourceNamespacePersistence } from "../persistence/declare";
 import { NamespaceProcessResult } from "./declare";
 
 export class ResourceNamespace {
 
-    public static uniformResourceName(): ResourceNamespace {
+    public static uniformResourceName(initialCategories: ResourceCategory[] = []): ResourceNamespace {
 
-        return this.create(UNIFORM_RESOURCE_NAME_NAMESPACE);
+        return this.create(UNIFORM_RESOURCE_NAME_NAMESPACE, initialCategories);
     }
 
-    public static create(namespace: string): ResourceNamespace {
+    public static create(namespace: string, initialCategories: ResourceCategory[] = []): ResourceNamespace {
 
-        return new ResourceNamespace(namespace);
+        return new ResourceNamespace(namespace, initialCategories);
+    }
+
+    public static fromPersistence(persistence: ResourceNamespacePersistence): ResourceNamespace {
+
+        return new ResourceNamespace(
+            persistence.namespace,
+            persistence.categories.map((category: ResourceCategoryPersistence) => {
+                return ResourceCategory.fromPersistence(category);
+            }),
+        );
     }
 
     protected readonly _namespace: string;
     protected readonly _categories: ResourceCategory[];
 
-    private constructor(namespace: string) {
+    private constructor(namespace: string, initialCategories: ResourceCategory[]) {
 
         this._namespace = namespace;
-        this._categories = [];
+        this._categories = initialCategories;
     }
 
     public get length(): number {

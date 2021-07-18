@@ -5,8 +5,9 @@
  */
 
 import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
-import { ResourceCategoryPersistence } from "../persistence/declare";
+import { ResourceCategoryPersistence, ResourceSubsetPersistence } from "../persistence/declare";
 import { IResourceSubset, SubsetProcessResult } from "../subset/declare";
+import { ResourceSubset } from "../subset/subset";
 import { hashMapValues } from "../util/hash";
 import { CategoryProcessResult } from "./declare";
 
@@ -20,6 +21,16 @@ export class ResourceCategory {
     public static fromSubsetList(categoryName: string, subsets: IResourceSubset[]): ResourceCategory {
 
         return new ResourceCategory(categoryName, subsets);
+    }
+
+    public static fromPersistence(persistence: ResourceCategoryPersistence): ResourceCategory {
+
+        return new ResourceCategory(
+            persistence.categoryName,
+            persistence.subsets.map((subset: ResourceSubsetPersistence) => {
+                return ResourceSubset.fromPersistence(subset);
+            }),
+        );
     }
 
     private readonly _categoryName: string;
