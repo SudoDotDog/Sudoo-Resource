@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Resource_Handler
+ * @namespace Resource_Consumer
  * @description Handler
  * @override Unit Test
  */
@@ -8,12 +8,12 @@
 import { expect } from "chai";
 import * as Chance from "chance";
 import { ResourceCategory, ResourceSubset } from "../../../src";
-import { ResourceHandler } from "../../../src/handler/handler";
+import { ResourceHandler } from "../../../src/consumer/handler";
 import { ResourceNamespace } from "../../../src/namespace/namespace";
 
 describe('Given {ResourceHandler} Class', (): void => {
 
-    const chance: Chance.Chance = new Chance('resource-handler-handler');
+    const chance: Chance.Chance = new Chance('resource-consumer-handler');
 
     it('should be able to construct', (): void => {
 
