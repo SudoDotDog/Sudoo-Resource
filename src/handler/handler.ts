@@ -8,6 +8,7 @@ import { ResourceCategory } from "../category/category";
 import { NamespaceProcessResult } from "../namespace/declare";
 import { ResourceNamespace } from "../namespace/namespace";
 import { ResourceHandlingAction } from "./declare";
+import { separateResourceString } from "../util/separate";
 
 export class ResourceHandler {
 
@@ -77,5 +78,11 @@ export class ResourceHandler {
             }
         }
         return true;
+    }
+
+    public async handlerResourceString(resourceString: string): Promise<boolean> {
+
+        const resourceList: string[] = separateResourceString(resourceString);
+        return this.handleResource(resourceList);
     }
 }

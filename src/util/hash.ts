@@ -21,7 +21,7 @@ export const hashMapValues = (target: Map<IResourceSubset, string>): Record<stri
 
     for (const entry of entries) {
 
-        const entryName: string = entry[0].name;
+        const entryName: string = entry[0].subsetName;
         const entryValue: string = entry[1];
 
         if (typeof result[entryName] === 'undefined') {

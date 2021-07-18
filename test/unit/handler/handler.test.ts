@@ -29,4 +29,27 @@ describe('Given {ResourceHandler} Class', (): void => {
 
         expect(handler).to.be.instanceOf(ResourceHandler);
     });
+
+    it('should be able to execute action - single action', (): void => {
+
+        const namespaceString: string = chance.word();
+        let actionCalled: boolean = false;
+
+        const namespace: ResourceNamespace = ResourceNamespace.create(namespaceString);
+        const category: ResourceCategory = ResourceCategory.fromSubsets(
+            chance.word(),
+            ResourceSubset.identifier(chance.word()),
+        );
+
+        namespace.addCategory(category);
+
+        const handler: ResourceHandler = ResourceHandler.fromNamespace(namespace);
+        handler.addAction(category, () => {
+            actionCalled = true;
+        });
+
+        handler.handlerResourceString(`${namespaceString}:${chance.word()}`);
+
+        expect(actionCalled).to.be.true;
+    });
 });
