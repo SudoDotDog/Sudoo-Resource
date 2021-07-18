@@ -83,6 +83,6 @@ export class ResourceAsyncParser<T> {
     public async ensureParseResourceString(resourceString: string): Promise<T> {
 
         const resourceList: string[] = separateResourceString(resourceString);
-        return await this.parseResource(resourceList);
+        return await this.ensureParseResource(resourceList);
     }
 }

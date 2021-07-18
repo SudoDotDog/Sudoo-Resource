@@ -83,6 +83,6 @@ export class ResourceParser<T> {
     public ensureParseResourceString(resourceString: string): T {
 
         const resourceList: string[] = separateResourceString(resourceString);
-        return this.parseResource(resourceList);
+        return this.ensureParseResource(resourceList);
     }
 }

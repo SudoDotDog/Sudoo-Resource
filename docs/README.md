@@ -14,3 +14,21 @@ yarn add @sudoo/resource
 # Or
 npm install @sudoo/resource --save
 ```
+
+## Usage
+
+```ts
+import { ResourceCategory } from "@sudoo/resource";
+
+const namespace: ResourceNamespace = ResourceNamespace.uniformResourceName();
+const category: ResourceCategory = ResourceCategory.fromSubsets(
+    'category-name',
+    ResourceSubset.enum(enumName, [
+        availableEnum,
+    ]),
+    ResourceSubset.identifier(firstIdentifierName),
+    ResourceSubset.fixed(fixedName, availableFixed),
+    ResourceSubset.identifier(secondIdentifierName),
+);
+namespace.addCategory(category);
+```
