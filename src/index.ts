@@ -7,6 +7,7 @@
 export * from "./category/category";
 export * from "./category/declare";
 export * from "./common/declare";
+export * from "./consumer/async-parser";
 export * from "./consumer/handler";
 export * from "./consumer/parser";
 export * from "./namespace/namespace";

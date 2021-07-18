@@ -1,24 +1,24 @@
 /**
  * @author WMXPY
  * @namespace Consumer
- * @description Parser
+ * @description Async Parser
  */
 
 import { ResourceCategory } from "../category/category";
 import { NamespaceProcessResult } from "../namespace/declare";
 import { ResourceNamespace } from "../namespace/namespace";
 import { separateResourceString } from "../util/separate";
-import { ResourceParsingFunction } from "./declare";
+import { AsyncResourceParsingFunction } from "./declare";
 
-export class ResourceParser<T> {
+export class ResourceAsyncParser<T> {
 
-    public static fromNamespace<T>(namespace: ResourceNamespace, defaultValue?: T): ResourceParser<T> {
+    public static fromNamespace<T>(namespace: ResourceNamespace, defaultValue?: T): ResourceAsyncParser<T> {
 
-        return new ResourceParser<T>(namespace, defaultValue);
+        return new ResourceAsyncParser<T>(namespace, defaultValue);
     }
 
     private readonly _namespace: ResourceNamespace;
-    private readonly _categoryMap: Map<ResourceCategory, ResourceParsingFunction<T>>;
+    private readonly _categoryMap: Map<ResourceCategory, AsyncResourceParsingFunction<T>>;
 
     private readonly _defaultValue?: T;
 
@@ -30,7 +30,7 @@ export class ResourceParser<T> {
         this._defaultValue = defaultValue;
     }
 
-    public setParser(category: ResourceCategory, parser: ResourceParsingFunction<T>): this {
+    public setParser(category: ResourceCategory, parser: AsyncResourceParsingFunction<T>): this {
 
         this._categoryMap.set(category, parser);
         return this;
@@ -42,7 +42,7 @@ export class ResourceParser<T> {
         return this;
     }
 
-    public parseResource(elements: string[]): T | undefined {
+    public async parseResource(elements: string[]): Promise<T | undefined> {
 
         const processResult: NamespaceProcessResult = this._namespace.process(elements);
 
@@ -53,17 +53,17 @@ export class ResourceParser<T> {
             return this._defaultValue;
         }
 
-        const parser: ResourceParsingFunction<T> = this._categoryMap.get(processResult.category) as ResourceParsingFunction<T>;
-        return parser(processResult);
+        const parser: AsyncResourceParsingFunction<T> = this._categoryMap.get(processResult.category) as AsyncResourceParsingFunction<T>;
+        return await Promise.resolve(parser(processResult));
     }
 
-    public parseResourceString(resourceString: string): T | undefined {
+    public async parseResourceString(resourceString: string): Promise<T | undefined> {
 
         const resourceList: string[] = separateResourceString(resourceString);
-        return this.parseResource(resourceList);
+        return await this.parseResource(resourceList);
     }
 
-    public ensureParseResource(elements: string[]): T {
+    public async ensureParseResource(elements: string[]): Promise<T> {
 
         const processResult: NamespaceProcessResult = this._namespace.process(elements);
 
@@ -76,13 +76,13 @@ export class ResourceParser<T> {
             return this._defaultValue;
         }
 
-        const parser: ResourceParsingFunction<T> = this._categoryMap.get(processResult.category) as ResourceParsingFunction<T>;
-        return parser(processResult);
+        const parser: AsyncResourceParsingFunction<T> = this._categoryMap.get(processResult.category) as AsyncResourceParsingFunction<T>;
+        return await Promise.resolve(parser(processResult));
     }
 
-    public ensureParseResourceString(resourceString: string): T {
+    public async ensureParseResourceString(resourceString: string): Promise<T> {
 
         const resourceList: string[] = separateResourceString(resourceString);
-        return this.parseResource(resourceList);
+        return await this.parseResource(resourceList);
     }
 }
