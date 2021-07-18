@@ -27,4 +27,7 @@ export type ResourceCategoryPersistence = {
 };
 
 export type ResourceNamespacePersistence = {
+
+    readonly namespace: string;
+    readonly categories: ResourceCategoryPersistence[];
 };

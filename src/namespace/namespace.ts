@@ -7,6 +7,7 @@
 import { ResourceCategory } from "../category/category";
 import { CategoryProcessResult } from "../category/declare";
 import { UNIFORM_RESOURCE_NAME_NAMESPACE } from "../common/declare";
+import { ResourceNamespacePersistence } from "../persistence/declare";
 import { NamespaceProcessResult } from "./declare";
 
 export class ResourceNamespace {
@@ -81,6 +82,17 @@ export class ResourceNamespace {
         }
         return {
             matched: false,
+        };
+    }
+
+    public persistence(): ResourceNamespacePersistence {
+
+        return {
+
+            namespace: this._namespace,
+            categories: this._categories.map((category: ResourceCategory) => {
+                return category.persistence();
+            }),
         };
     }
 

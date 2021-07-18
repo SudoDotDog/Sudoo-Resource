@@ -92,7 +92,9 @@ export class ResourceCategory {
         return {
 
             categoryName: this._categoryName,
-            subsets: this._subsets.map((subset: IResourceSubset) => subset.persistence()),
+            subsets: this._subsets.map((subset: IResourceSubset) => {
+                return subset.persistence();
+            }),
         };
     }
 }
