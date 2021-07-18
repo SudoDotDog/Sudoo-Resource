@@ -13,3 +13,6 @@ export type ResourceDetail = {
 };
 
 export type ResourceHandlingAction = (detail: ResourceDetail) => Promise<void | boolean> | void | boolean;
+
+export type ResourceParsingFunction<T> = (detail: ResourceDetail) => T;
+export type AsyncResourceParsingFunction<T> = (detail: ResourceDetail) => T | Promise<T>;
