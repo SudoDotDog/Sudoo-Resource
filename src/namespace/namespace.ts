@@ -41,6 +41,9 @@ export class ResourceNamespace {
         this._categories = initialCategories;
     }
 
+    public get namespace(): string {
+        return this._namespace;
+    }
     public get length(): number {
         return this._categories.length;
     }
@@ -49,6 +52,11 @@ export class ResourceNamespace {
 
         this._categories.push(category);
         return this;
+    }
+
+    public getCategories(): ResourceCategory[] {
+
+        return this._categories;
     }
 
     public test(elements: string[]): boolean {
