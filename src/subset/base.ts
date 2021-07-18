@@ -4,6 +4,7 @@
  * @description Base
  */
 
+import { ResourceSubsetPersistence } from "../persistence/declare";
 import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./declare";
 
 export abstract class ResourceBaseSubset implements IResourceSubset {
@@ -36,5 +37,10 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
     public toString(): string {
 
         throw new Error(`[Sudoo-Resource] ${this.constructor.name}::toString is abstract`);
+    }
+
+    public persistence(): ResourceSubsetPersistence {
+
+        throw new Error(`[Sudoo-Resource] ${this.constructor.name}::persistence is abstract`);
     }
 }

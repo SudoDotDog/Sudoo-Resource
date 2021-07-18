@@ -4,6 +4,8 @@
  * @description Declare
  */
 
+import { ResourceSubsetPersistence } from "../persistence/declare";
+
 export enum RESOURCE_SUBSET_TYPE {
 
     IDENTIFIER = "IDENTIFIER",
@@ -29,4 +31,5 @@ export interface IResourceSubset {
     process: (target: string) => SubsetProcessResult;
 
     toString(): string;
+    persistence(): ResourceSubsetPersistence;
 }
