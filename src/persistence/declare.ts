@@ -20,5 +20,11 @@ export type ResourceSubsetPersistence = {
     readonly type: 'identifier';
 });
 
+export type ResourceCategoryPersistence = {
+
+    readonly categoryName: string;
+    readonly subsets: ResourceSubsetPersistence[];
+};
+
 export type ResourceNamespacePersistence = {
 };

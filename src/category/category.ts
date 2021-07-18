@@ -4,10 +4,11 @@
  * @description Category
  */
 
-import { CategoryProcessResult } from "./declare";
+import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
+import { ResourceCategoryPersistence } from "../persistence/declare";
 import { IResourceSubset, SubsetProcessResult } from "../subset/declare";
 import { hashMapValues } from "../util/hash";
-import { RESOURCE_CATEGORY_SEPARATOR } from "../common/declare";
+import { CategoryProcessResult } from "./declare";
 
 export class ResourceCategory {
 
@@ -84,5 +85,14 @@ export class ResourceCategory {
         return this._subsets
             .map((subset: IResourceSubset) => subset.toString())
             .join(RESOURCE_CATEGORY_SEPARATOR);
+    }
+
+    public persistence(): ResourceCategoryPersistence {
+
+        return {
+
+            categoryName: this._categoryName,
+            subsets: this._subsets.map((subset: IResourceSubset) => subset.persistence()),
+        };
     }
 }
