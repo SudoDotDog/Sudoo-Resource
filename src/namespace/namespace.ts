@@ -22,6 +22,16 @@ export class ResourceNamespace {
         return this.create(SUDO_RESOURCE_NAME_NAMESPACE, initialCategories);
     }
 
+    public static createWithCategories(namespace: string, ...categories: ResourceCategory[]): ResourceNamespace {
+
+        return this.createWithCategoryList(namespace, categories);
+    }
+
+    public static createWithCategoryList(namespace: string, categoryList: ResourceCategory[]): ResourceNamespace {
+
+        return this.create(namespace, categoryList);
+    }
+
     public static create(namespace: string, initialCategories: ResourceCategory[] = []): ResourceNamespace {
 
         return new ResourceNamespace(namespace, initialCategories);
