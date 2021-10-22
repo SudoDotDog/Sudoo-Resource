@@ -6,7 +6,7 @@
 
 import { ResourceCategory } from "../category/category";
 import { CategoryProcessResult } from "../category/declare";
-import { UNIFORM_RESOURCE_NAME_NAMESPACE } from "../common/declare";
+import { RESOURCE_CATEGORY_SEPARATOR, SUDO_RESOURCE_NAME_NAMESPACE, UNIFORM_RESOURCE_NAME_NAMESPACE } from "../common/declare";
 import { ResourceCategoryPersistence, ResourceNamespacePersistence } from "../persistence/declare";
 import { NamespaceProcessResult } from "./declare";
 
@@ -15,6 +15,11 @@ export class ResourceNamespace {
     public static uniformResourceName(initialCategories: ResourceCategory[] = []): ResourceNamespace {
 
         return this.create(UNIFORM_RESOURCE_NAME_NAMESPACE, initialCategories);
+    }
+
+    public static sudoResourceName(initialCategories: ResourceCategory[] = []): ResourceNamespace {
+
+        return this.create(SUDO_RESOURCE_NAME_NAMESPACE, initialCategories);
     }
 
     public static create(namespace: string, initialCategories: ResourceCategory[] = []): ResourceNamespace {
@@ -105,7 +110,7 @@ export class ResourceNamespace {
 
     public hash(): string {
 
-        const categoriesString: string = this.toResourceStringList().join('::');
+        const categoriesString: string = this.toResourceStringList().join(RESOURCE_CATEGORY_SEPARATOR);
         return `${this._namespace}::${categoriesString}`;
     }
 
