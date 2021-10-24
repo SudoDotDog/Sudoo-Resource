@@ -74,6 +74,16 @@ export class ResourceNamespace {
         return this._categories;
     }
 
+    public getCategoryByName(categoryName: string): ResourceCategory | null {
+
+        for (const category of this._categories) {
+            if (category.categoryName === categoryName) {
+                return category;
+            }
+        }
+        return null;
+    }
+
     public test(elements: string[]): boolean {
 
         const processResult: NamespaceProcessResult = this.process(elements);

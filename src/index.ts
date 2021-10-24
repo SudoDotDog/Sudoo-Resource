@@ -13,6 +13,7 @@ export * from "./consumer/parser";
 export * from "./namespace/namespace";
 export * from "./persistence/declare";
 export * from "./producer/category";
+export * from "./producer/namespace";
 export * from "./subset/base";
 export * from "./subset/declare";
 export * from "./subset/enum";

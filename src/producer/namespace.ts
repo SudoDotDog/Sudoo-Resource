@@ -5,44 +5,30 @@
  */
 
 import { ResourceCategory } from "../category/category";
-import { RESOURCE_NAMESPACE_SEPARATOR, RESOURCE_SUBSET_SEPARATOR } from "../common/declare";
 import { ResourceNamespace } from "../namespace/namespace";
-import { IResourceSubset } from "../subset/declare";
+import { ResourceCategoryProducer } from "./category";
 
-export class ResourceCategoryProducer {
+export class ResourceNamespaceProducer {
 
-    public static fromNamespaceAndCategory(namespace: ResourceNamespace, category: ResourceCategory): ResourceCategoryProducer {
+    public static fromNamespace(namespace: ResourceNamespace): ResourceNamespaceProducer {
 
-        return new ResourceCategoryProducer(namespace.namespace, category);
+        return new ResourceNamespaceProducer(namespace);
     }
 
-    public static fromNamespaceNameAndCategory(namespace: string, category: ResourceCategory): ResourceCategoryProducer {
+    private readonly _namespace: ResourceNamespace;
 
-        return new ResourceCategoryProducer(namespace, category);
-    }
-
-    private readonly _namespace: string;
-    private readonly _category: ResourceCategory;
-
-    private constructor(namespace: string, category: ResourceCategory) {
+    private constructor(namespace: ResourceNamespace) {
 
         this._namespace = namespace;
-        this._category = category;
     }
 
-    public produceByRecord(record: Record<string, string>): string {
+    public getCategoryProducerByCategoryName(categoryName: string): ResourceCategoryProducer | null {
 
-        const subsets: IResourceSubset[] = this._category.subsets;
-        const resultList: string[] = [
-            this._category.categoryName,
-        ];
+        const category: ResourceCategory | null = this._namespace.getCategoryByName(categoryName);
 
-        for (const subset of subsets) {
-            if (typeof record[subset.subsetName] !== 'undefined') {
-                resultList.push(record[subset.subsetName]);
-            }
+        if (category === null) {
+            return null;
         }
-
-        return `${this._namespace}${RESOURCE_NAMESPACE_SEPARATOR}${resultList.join(RESOURCE_SUBSET_SEPARATOR)}`;
+        return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
     }
 }
