@@ -16,17 +16,17 @@ export class ResourceCategoryProducer {
         return new ResourceCategoryProducer(namespace.namespace, category);
     }
 
-    public static fromNamespaceNameAndCategory(namespace: string, category: ResourceCategory): ResourceCategoryProducer {
+    public static fromNamespaceNameAndCategory(namespaceName: string, category: ResourceCategory): ResourceCategoryProducer {
 
-        return new ResourceCategoryProducer(namespace, category);
+        return new ResourceCategoryProducer(namespaceName, category);
     }
 
-    private readonly _namespace: string;
+    private readonly _namespaceName: string;
     private readonly _category: ResourceCategory;
 
-    private constructor(namespace: string, category: ResourceCategory) {
+    private constructor(namespaceName: string, category: ResourceCategory) {
 
-        this._namespace = namespace;
+        this._namespaceName = namespaceName;
         this._category = category;
     }
 
@@ -47,6 +47,6 @@ export class ResourceCategoryProducer {
             }
         }
 
-        return `${this._namespace}${RESOURCE_NAMESPACE_SEPARATOR}${resultList.join(RESOURCE_SUBSET_SEPARATOR)}`;
+        return `${this._namespaceName}${RESOURCE_NAMESPACE_SEPARATOR}${resultList.join(RESOURCE_SUBSET_SEPARATOR)}`;
     }
 }

@@ -71,7 +71,7 @@ export class ResourceParser<T> {
             || !this._categoryMap.has(processResult.category)) {
 
             if (typeof this._defaultValue === 'undefined') {
-                throw new Error(`Can't find resource: ${elements.join(":")}, no default result found`);
+                throw new Error(`[Sudoo-Resource] Can't find resource: ${elements.join(":")}, no default result found`);
             }
             return this._defaultValue;
         }

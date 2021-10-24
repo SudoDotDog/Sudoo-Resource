@@ -36,6 +36,16 @@ export class ResourceNamespaceProducer {
         return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
     }
 
+    public ensureCategoryProducerByCategoryName(categoryName: string): ResourceCategoryProducer {
+
+        const categoryProducer: ResourceCategoryProducer | null = this.getCategoryProducerByCategoryName(categoryName);
+
+        if (categoryProducer === null) {
+            throw new Error(`[Sudoo-Resource] Category ${categoryName} not found`);
+        }
+        return categoryProducer;
+    }
+
     public getCategoryProducerByCategory(category: ResourceCategory): ResourceCategoryProducer {
 
         return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
