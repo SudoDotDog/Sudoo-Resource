@@ -30,6 +30,10 @@ export class ResourceCategoryProducer {
         this._category = category;
     }
 
+    public get category(): ResourceCategory {
+        return this._category;
+    }
+
     public produceByRecord(record: Record<string, string>): string {
 
         const subsets: IResourceSubset[] = this._category.subsets;

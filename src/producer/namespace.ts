@@ -22,6 +22,10 @@ export class ResourceNamespaceProducer {
         this._namespace = namespace;
     }
 
+    public get namespace(): ResourceNamespace {
+        return this._namespace;
+    }
+
     public getCategoryProducerByCategoryName(categoryName: string): ResourceCategoryProducer | null {
 
         const category: ResourceCategory | null = this._namespace.getCategoryByName(categoryName);
