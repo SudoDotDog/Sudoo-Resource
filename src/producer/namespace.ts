@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
  * @namespace Resource_Producer
- * @description Category
+ * @description Namespace
  */
 
 import { ResourceCategory } from "../category/category";

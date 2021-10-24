@@ -20,7 +20,7 @@ describe('Given {ResourceCategoryProducer} Class', (): void => {
             ResourceSubset.identifier(chance.word()),
         );
 
-        const producer: ResourceCategoryProducer = ResourceCategoryProducer.fromCategory(chance.word(), category);
+        const producer: ResourceCategoryProducer = ResourceCategoryProducer.fromNamespaceNameAndCategory(chance.word(), category);
 
         expect(producer).to.be.instanceOf(ResourceCategoryProducer);
     });
@@ -42,7 +42,7 @@ describe('Given {ResourceCategoryProducer} Class', (): void => {
             ResourceSubset.identifier(secondIdentifier),
         );
 
-        const producer: ResourceCategoryProducer = ResourceCategoryProducer.fromCategory(namespaceName, category);
+        const producer: ResourceCategoryProducer = ResourceCategoryProducer.fromNamespaceNameAndCategory(namespaceName, category);
         const result: string = producer.produceByRecord({
             [firstIdentifier]: firstSubset,
             [secondIdentifier]: secondSubset,
