@@ -31,4 +31,9 @@ export class ResourceNamespaceProducer {
         }
         return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
     }
+
+    public getCategoryProducerByCategory(category: ResourceCategory): ResourceCategoryProducer {
+
+        return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
+    }
 }
