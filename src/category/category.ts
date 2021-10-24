@@ -48,6 +48,9 @@ export class ResourceCategory {
     public get categoryName(): string {
         return this._categoryName;
     }
+    public get subsets(): IResourceSubset[] {
+        return this._subsets;
+    }
 
     public match(elements: string[]): boolean {
 
