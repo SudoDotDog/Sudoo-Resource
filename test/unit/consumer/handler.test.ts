@@ -7,9 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { ResourceCategory, ResourceSubset } from "../../../src";
-import { ResourceHandler } from "../../../src/consumer/handler";
-import { ResourceNamespace } from "../../../src/namespace/namespace";
+import { ResourceCategory, ResourceHandler, ResourceNamespace, ResourceSubset } from "../../../src";
 
 describe('Given {ResourceHandler} Class', (): void => {
 
