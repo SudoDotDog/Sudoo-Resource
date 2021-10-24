@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Consumer
+ * @namespace Resource_Consumer
  * @description Async Parser
  */
 

@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Producer
+ * @namespace Resource_Producer
  * @description Producer
  */
 

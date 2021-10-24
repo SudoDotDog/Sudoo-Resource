@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Namespace
+ * @namespace Resource_Namespace
  * @description Declare
  */
 
