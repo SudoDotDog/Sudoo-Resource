@@ -46,8 +46,13 @@ export class ResourceNamespaceProducer {
         return categoryProducer;
     }
 
-    public getCategoryProducerByCategory(category: ResourceCategory): ResourceCategoryProducer {
+    public getCategoryProducerByCategory(category: ResourceCategory): ResourceCategoryProducer | null {
 
-        return ResourceCategoryProducer.fromNamespaceAndCategory(this._namespace, category);
+        return this.getCategoryProducerByCategoryName(category.categoryName);
+    }
+
+    public ensureCategoryProducerByCategory(category: ResourceCategory): ResourceCategoryProducer {
+
+        return this.ensureCategoryProducerByCategoryName(category.categoryName);
     }
 }
