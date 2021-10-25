@@ -139,7 +139,7 @@ export class ResourceNamespace {
         return this._categories.map((category: ResourceCategory) => {
 
             const categoryString: string = category.toString();
-            return `${category.categoryName}${RESOURCE_CATEGORY_NAME_SEPARATOR}${this._namespace}${RESOURCE_CATEGORY_SEPARATOR}${categoryString}`;
+            return `${category.categoryNickName}${RESOURCE_CATEGORY_NAME_SEPARATOR}${this._namespace}${RESOURCE_CATEGORY_SEPARATOR}${categoryString}`;
         });
     }
 

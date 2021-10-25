@@ -36,10 +36,14 @@ export class ResourceCategory {
     private readonly _categoryName: string;
     private readonly _subsets: IResourceSubset[];
 
+    private _categoryNickName: string;
+
     private constructor(categoryName: string, subsets: IResourceSubset[]) {
 
         this._categoryName = categoryName;
         this._subsets = subsets;
+
+        this._categoryNickName = categoryName;
     }
 
     public get length(): number {
@@ -50,6 +54,16 @@ export class ResourceCategory {
     }
     public get subsets(): IResourceSubset[] {
         return this._subsets;
+    }
+
+    public get categoryNickName(): string {
+        return this._categoryNickName;
+    }
+
+    public setCategoryNickName(nickName: string): this {
+
+        this._categoryNickName = nickName;
+        return this;
     }
 
     public match(elements: string[]): boolean {
