@@ -131,7 +131,12 @@ export class ResourceNamespace {
     public hash(): string {
 
         const categoriesString: string = this.toResourceStringList().join(RESOURCE_CATEGORY_SEPARATOR);
-        return `${this._namespace}${RESOURCE_NAMESPACE_SEPARATOR}${categoriesString}`;
+
+        return [
+            this._namespace,
+            RESOURCE_NAMESPACE_SEPARATOR,
+            categoriesString,
+        ].join('');
     }
 
     public toResourceStringList(): string[] {
@@ -139,7 +144,14 @@ export class ResourceNamespace {
         return this._categories.map((category: ResourceCategory) => {
 
             const categoryString: string = category.toString();
-            return `${category.categoryNickName}${RESOURCE_CATEGORY_NAME_SEPARATOR}${this._namespace}${RESOURCE_CATEGORY_SEPARATOR}${categoryString}`;
+
+            return [
+                category.categoryNickName,
+                RESOURCE_CATEGORY_NAME_SEPARATOR,
+                this._namespace,
+                RESOURCE_CATEGORY_SEPARATOR,
+                categoryString,
+            ].join('');
         });
     }
 

@@ -47,6 +47,10 @@ export class ResourceCategoryProducer {
             }
         }
 
-        return `${this._namespaceName}${RESOURCE_NAMESPACE_SEPARATOR}${resultList.join(RESOURCE_SUBSET_SEPARATOR)}`;
+        return [
+            this._namespaceName,
+            RESOURCE_NAMESPACE_SEPARATOR,
+            resultList.join(RESOURCE_SUBSET_SEPARATOR),
+        ].join('');
     }
 }
