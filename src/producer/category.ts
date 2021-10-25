@@ -30,6 +30,9 @@ export class ResourceCategoryProducer {
         this._category = category;
     }
 
+    public get namespaceName(): string {
+        return this._namespaceName;
+    }
     public get category(): ResourceCategory {
         return this._category;
     }
@@ -42,8 +45,11 @@ export class ResourceCategoryProducer {
         ];
 
         for (const subset of subsets) {
+
             if (typeof record[subset.subsetName] !== 'undefined') {
-                resultList.push(record[subset.subsetName]);
+                resultList.push(String(record[subset.subsetName]));
+            } else {
+                resultList.push('');
             }
         }
 

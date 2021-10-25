@@ -50,4 +50,28 @@ describe('Given {ResourceCategoryProducer} Class', (): void => {
 
         expect(result).to.be.equal(`${namespaceName}::${categoryName}:${firstSubset}:${secondSubset}`);
     });
+
+    it('should be able to create string with empty item', (): void => {
+
+        const namespaceName: string = chance.word();
+        const categoryName: string = chance.word();
+
+        const firstIdentifier: string = chance.word();
+        const secondIdentifier: string = chance.word();
+
+        const secondSubset: string = chance.word();
+
+        const category: ResourceCategory = ResourceCategory.fromSubsets(
+            categoryName,
+            ResourceSubset.identifier(firstIdentifier),
+            ResourceSubset.identifier(secondIdentifier),
+        );
+
+        const producer: ResourceCategoryProducer = ResourceCategoryProducer.fromNamespaceNameAndCategory(namespaceName, category);
+        const result: string = producer.produceByRecord({
+            [secondIdentifier]: secondSubset,
+        });
+
+        expect(result).to.be.equal(`${namespaceName}::${categoryName}::${secondSubset}`);
+    });
 });
