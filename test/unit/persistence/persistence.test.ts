@@ -37,6 +37,8 @@ describe('Given (Persistence) Methods', (): void => {
                 categoryName,
                 subsets: [{
                     subsetName: identifierName,
+                    required: false,
+                    defaultValue: "",
                     type: 'identifier',
                 }],
             }],
@@ -56,6 +58,8 @@ describe('Given (Persistence) Methods', (): void => {
                 categoryName,
                 subsets: [{
                     subsetName: identifierName,
+                    required: true,
+                    defaultValue: chance.string(),
                     type: 'identifier',
                 }],
             }],

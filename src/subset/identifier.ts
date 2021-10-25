@@ -51,6 +51,8 @@ export class ResourceIdentifierSubset extends ResourceBaseSubset implements IRes
         return {
 
             subsetName: this.subsetName,
+            required: this.isRequired(),
+            defaultValue: this.getDefaultValue(),
             type: 'identifier',
         };
     }

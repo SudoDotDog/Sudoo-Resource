@@ -30,7 +30,7 @@ describe('Given (Process) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.enum(enumName, [
                 availableEnum,
-            ]),
+            ], availableEnum),
             ResourceSubset.identifier(firstIdentifierName),
             ResourceSubset.fixed(fixedName, availableFixed),
             ResourceSubset.identifier(secondIdentifierName),
@@ -61,7 +61,7 @@ describe('Given (Process) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.enum(enumName, [
                 availableEnum,
-            ]),
+            ], availableEnum),
             ResourceSubset.identifier(firstIdentifierName),
             ResourceSubset.fixed(fixedName, availableFixed),
             ResourceSubset.identifier(secondIdentifierName),

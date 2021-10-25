@@ -57,6 +57,8 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
         return {
 
             subsetName: this.subsetName,
+            required: this.isRequired(),
+            defaultValue: this.getDefaultValue(),
             type: 'fixed',
             value: this._fixedSubset,
         };

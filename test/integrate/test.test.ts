@@ -23,7 +23,7 @@ describe('Given (Test) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.enum(chance.string(), [
                 availableEnum,
-            ]),
+            ], availableEnum),
         );
         namespace.addCategory(enumCategory);
 
@@ -43,7 +43,7 @@ describe('Given (Test) Integrate Test', (): void => {
             chance.string(),
             ResourceSubset.enum(chance.string(), [
                 availableEnum,
-            ]),
+            ], availableEnum),
         );
         namespace.addCategory(enumCategory);
 

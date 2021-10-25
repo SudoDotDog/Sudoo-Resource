@@ -63,6 +63,8 @@ export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceS
         return {
 
             subsetName: this.subsetName,
+            required: this.isRequired(),
+            defaultValue: this.getDefaultValue(),
             type: 'enum',
             options: this._options,
         };
