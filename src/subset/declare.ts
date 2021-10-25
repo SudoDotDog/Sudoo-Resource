@@ -27,6 +27,11 @@ export interface IResourceSubset {
     readonly subsetName: string;
     readonly type: RESOURCE_SUBSET_TYPE;
 
+    isRequired(): boolean;
+    setIsRequired(isRequired: boolean): IResourceSubset;
+    getDefaultValue(): string;
+    setDefaultValue(value: string): IResourceSubset;
+
     match(target: string): boolean;
     process: (target: string) => SubsetProcessResult;
 

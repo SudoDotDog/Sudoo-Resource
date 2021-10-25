@@ -47,9 +47,15 @@ export class ResourceCategoryProducer {
         for (const subset of subsets) {
 
             if (typeof record[subset.subsetName] !== 'undefined') {
+
                 resultList.push(String(record[subset.subsetName]));
             } else {
-                resultList.push('');
+
+                if (subset.isRequired()) {
+
+                    throw new Error(`[Sudoo-Resource] Required subset ${subset.subsetName} is not found in record`);
+                }
+                resultList.push(subset.getDefaultValue());
             }
         }
 

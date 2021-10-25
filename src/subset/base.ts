@@ -13,6 +13,9 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
 
     private readonly _subsetName: string;
 
+    private _isRequired: boolean = false;
+    private _defaultValue: string = '';
+
     protected constructor(subsetName: string, type: RESOURCE_SUBSET_TYPE) {
 
         this.type = type;
@@ -22,6 +25,28 @@ export abstract class ResourceBaseSubset implements IResourceSubset {
 
     public get subsetName(): string {
         return this._subsetName;
+    }
+
+    public isRequired(): boolean {
+
+        return this._isRequired;
+    }
+
+    public setIsRequired(isRequired: boolean): IResourceSubset {
+
+        this._isRequired = isRequired;
+        return this;
+    }
+
+    public getDefaultValue(): string {
+
+        return this._defaultValue;
+    }
+
+    public setDefaultValue(value: string): IResourceSubset {
+
+        this._defaultValue = value;
+        return this;
     }
 
     public match(_target: string): boolean {
