@@ -22,6 +22,7 @@ export class ResourceFixedSubset extends ResourceBaseSubset implements IResource
         super(subsetName, RESOURCE_SUBSET_TYPE.FIXED);
 
         this._fixedSubset = fixedSubset;
+        this.setDefaultValue(fixedSubset);
     }
 
     public match(target: string): boolean {

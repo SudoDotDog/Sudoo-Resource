@@ -12,9 +12,9 @@ import { ResourceIdentifierSubset } from "./identifier";
 
 export class ResourceSubset {
 
-    public static enum(subsetName: string, options: string[]): IResourceSubset {
+    public static enum(subsetName: string, options: string[], defaultValue: string): IResourceSubset {
 
-        return ResourceEnumSubset.create(subsetName, options);
+        return ResourceEnumSubset.create(subsetName, options, defaultValue);
     }
 
     public static fixed(subsetName: string, fixedSubset: string): IResourceSubset {
@@ -32,13 +32,21 @@ export class ResourceSubset {
         switch (structure.type) {
 
             case "enum": {
-                return this.enum(structure.subsetName, structure.options);
+                const result: IResourceSubset = this.enum(structure.subsetName, structure.options, structure.defaultValue);
+                result.setIsRequired(structure.required);
+                return result;
             }
             case "fixed": {
-                return this.fixed(structure.subsetName, structure.value);
+                const result: IResourceSubset = this.fixed(structure.subsetName, structure.value);
+                result.setIsRequired(structure.required);
+                result.setDefaultValue(structure.defaultValue);
+                return result;
             }
             case "identifier": {
-                return this.identifier(structure.subsetName);
+                const result: IResourceSubset = this.identifier(structure.subsetName);
+                result.setIsRequired(structure.required);
+                result.setDefaultValue(structure.defaultValue);
+                return result;
             }
         }
         throw new Error(`Unsupported subset type: ${(structure as any).type}`);

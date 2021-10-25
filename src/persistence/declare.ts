@@ -7,6 +7,8 @@
 export type ResourceSubsetPersistence = {
 
     readonly subsetName: string;
+    readonly required: boolean;
+    readonly defaultValue: string;
 } & ({
 
     readonly type: 'enum';
