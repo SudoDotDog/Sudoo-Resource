@@ -10,19 +10,24 @@ import { IResourceSubset, RESOURCE_SUBSET_TYPE, SubsetProcessResult } from "./de
 
 export class ResourceEnumSubset extends ResourceBaseSubset implements IResourceSubset {
 
-    public static create(subsetName: string, options: string[], defaultValue: string): ResourceEnumSubset {
+    public static create(subsetName: string, options: string[], defaultValue?: string): ResourceEnumSubset {
 
         return new ResourceEnumSubset(subsetName, options, defaultValue);
     }
 
     private readonly _options: string[];
 
-    private constructor(subsetName: string, options: string[], defaultValue: string) {
+    private constructor(subsetName: string, options: string[], defaultValue?: string) {
 
         super(subsetName, RESOURCE_SUBSET_TYPE.ENUM);
 
         this._options = options;
-        this.setDefaultValue(defaultValue);
+
+        if (typeof defaultValue === 'string') {
+            this.setDefaultValue(defaultValue);
+        } else {
+            this.setIsRequired(true);
+        }
     }
 
     public match(target: string): boolean {

@@ -12,7 +12,7 @@ import { ResourceIdentifierSubset } from "./identifier";
 
 export class ResourceSubset {
 
-    public static enum(subsetName: string, options: string[], defaultValue: string): IResourceSubset {
+    public static enum(subsetName: string, options: string[], defaultValue?: string): IResourceSubset {
 
         return ResourceEnumSubset.create(subsetName, options, defaultValue);
     }
